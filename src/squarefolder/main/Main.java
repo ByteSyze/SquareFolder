@@ -1,5 +1,7 @@
 package squarefolder.main;
 
+import java.io.IOException;
+
 public class Main 
 {
 	
@@ -7,6 +9,7 @@ public class Main
 	
 	public static void main(String[] args)
 	{
+		System.out.println("Starting SquareFolder");
 		
 		int port;
 		
@@ -19,7 +22,14 @@ public class Main
 			//Use default port if either no port was passed, or the passed in port was not a number.
 			port = DEFAULT_PORT;
 		}
-		
-		SquareFolder squareFolder = new SquareFolder(port);
+
+		try
+		{
+			SquareFolder squareFolder = new SquareFolder(port);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }
