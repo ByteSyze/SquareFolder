@@ -1,8 +1,12 @@
 package squarefolder.io.stream;
 
 import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * An extension of BufferedOutputStream for the purpose of throttling the maximum speed at which data can be written.
+ * */
 public class ThrottledOutputStream extends BufferedOutputStream
 {
 	
@@ -28,6 +32,12 @@ public class ThrottledOutputStream extends BufferedOutputStream
 	public void setBaudRate(long baudRate)
 	{
 		this.baudRate = baudRate;
+	}
+	
+	@Override
+	public void write(byte[] b) throws IOException
+	{
+		super.write(b);
 	}
 
 }
