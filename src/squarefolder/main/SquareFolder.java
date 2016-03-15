@@ -5,7 +5,7 @@ import java.net.InetAddress;
 
 import javax.swing.JFrame;
 
-import squarefolder.net.SquareFolderDevice;
+import squarefolder.io.net.SquareFolderDevice;
 
 /**
  * 

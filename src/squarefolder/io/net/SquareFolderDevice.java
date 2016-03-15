@@ -1,4 +1,4 @@
-package squarefolder.net;
+package squarefolder.io.net;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
