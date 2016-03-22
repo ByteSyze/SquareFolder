@@ -11,7 +11,7 @@ import java.net.InetAddress;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import squarefolder.io.net.SquareFolderDevice;
+import squarefolder.io.net.SFDevice;
 import squarefolder.listeners.TrayIconMenuActionListener;
 
 /**
@@ -28,7 +28,7 @@ public class SquareFolder extends JFrame
 	private int port;
 	
 	/**The SquareFolderDevice that belongs to this computer.*/
-	private SquareFolderDevice ourDevice;
+	private SFDevice ourDevice;
 	
 	/// GUI related stuff ///
 	
@@ -44,7 +44,7 @@ public class SquareFolder extends JFrame
 		
 		this.port = port;
 		
-		ourDevice = new SquareFolderDevice(InetAddress.getLocalHost());
+		ourDevice = new SFDevice(InetAddress.getLocalHost());
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
@@ -94,7 +94,7 @@ public class SquareFolder extends JFrame
 		this.port = port;
 	}
 	
-	public SquareFolderDevice getOurDevice()
+	public SFDevice getOurDevice()
 	{
 		return ourDevice;
 	}

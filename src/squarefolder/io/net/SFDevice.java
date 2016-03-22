@@ -5,16 +5,14 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 
 /**
- * 
  * A SquareFolder-enabled device.
- * 
  * */
-public class SquareFolderDevice
+public class SFDevice
 {
 	private InetAddress inetAddress;
 	private NetworkInterface networkInterface;
 	
-	public SquareFolderDevice(InetAddress inetAddress) throws SocketException
+	public SFDevice(InetAddress inetAddress) throws SocketException
 	{
 		this.inetAddress = inetAddress;
 		
