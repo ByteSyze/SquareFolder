@@ -44,7 +44,7 @@ public class SquareFolder extends JFrame
 		
 		this.port = port;
 		
-		ourDevice = new SFDevice(InetAddress.getLocalHost());
+		//ourDevice = new SFDevice(InetAddress.getLocalHost());
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
