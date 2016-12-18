@@ -35,6 +35,8 @@ public class SquareFolder
 		
 		//ourDevice = new SFDevice(InetAddress.getLocalHost());
 		try {
+			ourDevice = new SFServer(InetAddress.getLocalHost(), port, port+1);
+			//ourDevice = new SFClient(InetAddress.getLocalHost(),InetAddress.getLocalHost(), port, port+1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
