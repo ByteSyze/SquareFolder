@@ -17,6 +17,7 @@ public class SFServer extends SFDevice
 	@Override
 	public boolean initializeTCPSocket(Socket socket) throws IOException 
 	{
+		socket = new Socket();
 		socket.bind(new InetSocketAddress(socket.getInetAddress(), tcpPort));
 		return false;
 	}

@@ -1,7 +1,12 @@
 package squarefolder.main;
 
+import java.io.IOException;
+import java.net.InetAddress;
+
 import squarefolder.gui.swing.SquareFolderFrame;
+import squarefolder.io.net.SFClient;
 import squarefolder.io.net.SFDevice;
+import squarefolder.io.net.SFServer;
 
 /**
  * Main class for the SquareFolder application.
@@ -29,6 +34,11 @@ public class SquareFolder
 		this.sfFrame = new SquareFolderFrame(false);
 		
 		//ourDevice = new SFDevice(InetAddress.getLocalHost());
+		try {
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public int getPort()
 	{

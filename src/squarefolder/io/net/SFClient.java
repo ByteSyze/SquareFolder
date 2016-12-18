@@ -22,6 +22,7 @@ public class SFClient extends SFDevice
 	@Override
 	public boolean initializeTCPSocket(Socket socket) throws IOException
 	{
+		socket = new Socket();
 		socket.connect(new InetSocketAddress(serverAddress, tcpPort));
 		return false;
 	}

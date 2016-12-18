@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import squarefolder.gui.swing.SquareFolderFrame;
-import squarefolder.main.SquareFolder;
 
 /**
  * Listener for all action events related to a SquareFolder's TrayIcon.
