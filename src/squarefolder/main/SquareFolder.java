@@ -6,7 +6,6 @@ import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -37,12 +36,22 @@ public class SquareFolder extends JFrame
 	private SystemTray sysTray;
 	
 	public MenuItem exit;
-	
-	public SquareFolder(int port) throws IOException
+
+	/**
+	 * @param	port				what port to bind this SquareFolder's device sockets to.
+	 * @param	visibleOnStart		determines whether to make the frame visible immediately after instantiating.
+	 * */
+	public SquareFolder(int port, boolean visibleOnStart) throws IOException
 	{
 		super(NAME);
 		
 		this.port = port;
+		
+		SquareFolderPanel sfPanel = new SquareFolderPanel();
+		
+		this.add(sfPanel);
+		this.pack();
+		this.setVisible(visibleOnStart);
 		
 		//ourDevice = new SFDevice(InetAddress.getLocalHost());
 		

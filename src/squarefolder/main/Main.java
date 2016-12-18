@@ -25,7 +25,7 @@ public class Main
 
 		try
 		{
-			SquareFolder squareFolder = new SquareFolder(port);
+			SquareFolder squareFolder = new SquareFolder(port, true);
 		} 
 		catch (IOException e) 
 		{
