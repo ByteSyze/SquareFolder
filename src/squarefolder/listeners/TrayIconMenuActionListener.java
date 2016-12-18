@@ -3,6 +3,7 @@ package squarefolder.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import squarefolder.gui.swing.SquareFolderFrame;
 import squarefolder.main.SquareFolder;
 
 /**
@@ -12,26 +13,26 @@ public final class TrayIconMenuActionListener implements ActionListener
 {
 	
 	/**The instance of SquareFolder that this listener is attached to.*/
-	private SquareFolder squareFolder;
+	private SquareFolderFrame sfFrame;
 	
-	public TrayIconMenuActionListener(SquareFolder sq)
+	public TrayIconMenuActionListener(SquareFolderFrame sff)
 	{
-		squareFolder = sq;
+		sfFrame = sff;
 	}
 	
 	/**Handles adding this listener to the menu items.*/
 	public void addListenerToMenuItems()
 	{
-		squareFolder.exit.addActionListener(this);
+		sfFrame.exit.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource() == squareFolder.exit)
+		if(e.getSource() == sfFrame.exit)
 		{
 			System.out.println("Stopping SquareFolder");
-			squareFolder.dispose();
+			sfFrame.dispose();
 			System.exit(0);
 		}
 	}

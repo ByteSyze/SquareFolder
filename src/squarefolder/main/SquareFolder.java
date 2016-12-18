@@ -1,27 +1,13 @@
 package squarefolder.main;
 
-import java.awt.MenuItem;
-import java.awt.PopupMenu;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-
+import squarefolder.gui.swing.SquareFolderFrame;
 import squarefolder.io.net.SFDevice;
-import squarefolder.listeners.TrayIconMenuActionListener;
 
 /**
  * Main class for the SquareFolder application.
  * */
-public class SquareFolder extends JFrame
+public class SquareFolder
 {
-
-	private static final long serialVersionUID = 1L;
-	
-	public static final String NAME = "SquareFolder Folder Syncing Tool";
 	
 	/**The port that this instance of SquareFolder runs on.*/
 	private int port;
@@ -30,69 +16,20 @@ public class SquareFolder extends JFrame
 	private SFDevice ourDevice;
 	
 	/// GUI related stuff ///
-	
-	private PopupMenu popup;
-	private TrayIcon trayIcon;
-	private SystemTray sysTray;
-	
-	public MenuItem exit;
+	private SquareFolderFrame sfFrame;
 
 	/**
 	 * @param	port				what port to bind this SquareFolder's device sockets to.
-	 * @param	visibleOnStart		determines whether to make the frame visible immediately after instantiating.
 	 * */
-	public SquareFolder(int port, boolean visibleOnStart) throws IOException
+	public SquareFolder(int port)
 	{
-		super(NAME);
 		
 		this.port = port;
 		
-		SquareFolderPanel sfPanel = new SquareFolderPanel();
-		
-		this.add(sfPanel);
-		this.pack();
-		this.setVisible(visibleOnStart);
+		this.sfFrame = new SquareFolderFrame(false);
 		
 		//ourDevice = new SFDevice(InetAddress.getLocalHost());
-		
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		
-		this.setupTrayIcon();
 	}
-	
-	private void setupTrayIcon()
-	{
-		if(SystemTray.isSupported()) 
-		{
-			try 
-			{
-		 		popup = new PopupMenu();
-				trayIcon = new TrayIcon(ImageIO.read(new File("squarefolder.png")));
-				sysTray = SystemTray.getSystemTray();
-				   
-				exit = new MenuItem("Exit");
-				   
-				popup.add(exit);
-				   
-				trayIcon.setPopupMenu(popup);
-	        	sysTray.add(trayIcon);
-	        	
-	        	TrayIconMenuActionListener listener = new TrayIconMenuActionListener(this);
-	        	listener.addListenerToMenuItems();
-	        	
-	    	} 
-			catch (Exception e) 
-			{
-	        	System.out.println("TrayIcon could not be added.");
-	    	}
-		}
-	}
-	
-	public void hideSquareFolder()
-	{
-		this.setVisible(false);
-	}
-	
 	public int getPort()
 	{
 		return this.port;
@@ -106,6 +43,11 @@ public class SquareFolder extends JFrame
 	public SFDevice getOurDevice()
 	{
 		return ourDevice;
+	}
+	
+	public SquareFolderFrame getSquareFolderFrame()
+	{
+		return sfFrame;
 	}
 
 }

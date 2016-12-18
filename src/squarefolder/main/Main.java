@@ -1,6 +1,6 @@
 package squarefolder.main;
 
-import java.io.IOException;
+import javax.swing.UIManager;
 
 public class Main 
 {
@@ -25,9 +25,10 @@ public class Main
 
 		try
 		{
-			SquareFolder squareFolder = new SquareFolder(port, true);
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			SquareFolder squareFolder = new SquareFolder(port);
 		} 
-		catch (IOException e) 
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}

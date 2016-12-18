@@ -1,4 +1,4 @@
-package squarefolder.main;
+package squarefolder.gui.swing;
 
 import java.awt.Dimension;
 
