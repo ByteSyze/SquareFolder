@@ -11,35 +11,22 @@ public class SFServer extends SFDevice
 	
 	private ServerSocket serverSocket;
 
-	public SFServer(int udpPort, int tcpPort) throws IOException 
+	public SFServer(int port) throws IOException 
 	{
-		super(udpPort, tcpPort);
+		super(port);
 	}
 
 	@Override
 	public boolean initializeTCPSocket(Socket socket) throws IOException 
 	{
-		serverSocket = new ServerSocket(tcpPort);
+		serverSocket = new ServerSocket(port);
 		socket = serverSocket.accept();
 		
-		return false;
-	}
-
-	@Override
-	public boolean initializeUDPSocket(DatagramSocket socket) throws IOException 
-	{
-		udpSocket = new DatagramSocket(udpPort);
 		return false;
 	}
 	
 	@Override
 	public void closeTCPSocket(Socket socket) throws IOException
-	{
-		socket.close();
-	}
-	
-	@Override
-	public void closeUDPSocket(DatagramSocket socket) throws IOException
 	{
 		socket.close();
 	}

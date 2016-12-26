@@ -38,11 +38,11 @@ public class SquareFolder
 		{
 			if(type == DeviceType.Server)
 			{
-				ourDevice = new SFServer(port, port+1);
+				ourDevice = new SFServer(port);
 			}
 			else if(type == DeviceType.Client)
 			{
-				ourDevice = new SFClient(InetAddress.getLocalHost(), port, port+1);
+				ourDevice = new SFClient(InetAddress.getLocalHost(), port);
 			}
 		} catch (IOException e) 
 		{

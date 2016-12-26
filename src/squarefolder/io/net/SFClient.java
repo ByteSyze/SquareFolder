@@ -9,9 +9,9 @@ public class SFClient extends SFDevice
 {
 	private InetAddress serverAddress;
 	
-	public SFClient(InetAddress serverAddress, int udpPort, int tcpPort) throws IOException 
+	public SFClient(InetAddress serverAddress, int port) throws IOException 
 	{
-		super(udpPort, tcpPort);
+		super(port);
 		
 		this.serverAddress = serverAddress;
 	}
@@ -19,24 +19,12 @@ public class SFClient extends SFDevice
 	@Override
 	public boolean initializeTCPSocket(Socket socket) throws IOException
 	{
-		socket = new Socket(serverAddress, tcpPort);
-		return false;
-	}
-
-	@Override
-	public boolean initializeUDPSocket(DatagramSocket socket) throws IOException 
-	{
+		socket = new Socket(serverAddress, port);
 		return false;
 	}
 	
 	@Override
 	public void closeTCPSocket(Socket socket) throws IOException
-	{
-		socket.close();
-	}
-	
-	@Override
-	public void closeUDPSocket(DatagramSocket socket) throws IOException
 	{
 		socket.close();
 	}

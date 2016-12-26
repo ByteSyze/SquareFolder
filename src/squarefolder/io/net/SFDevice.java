@@ -9,41 +9,18 @@ import java.net.Socket;
  * */
 public abstract class SFDevice
 {
+	protected Socket socket;
+	protected int 	 port;
 	
-	protected DatagramSocket	udpSocket;
-	protected Socket			tcpSocket;
-
-	
-	protected int udpPort, tcpPort;
-	
-	public SFDevice(int udpPort, int tcpPort) throws IOException
+	public SFDevice(int port) throws IOException
 	{	
-		this.udpPort = udpPort;
-		this.tcpPort = tcpPort;
+		this.port = port;
 		
-		this.initializeUDPSocket(udpSocket);
-		this.initializeTCPSocket(tcpSocket);
-	}
-	
-	/**
-	 * Closes all sockets associated with this device. Ignores any thrown IOExceptions.
-	 * */
-	public void closeSockets()
-	{
-		try 
-		{
-			closeUDPSocket(udpSocket);
-			closeTCPSocket(tcpSocket);
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		this.initializeTCPSocket(socket);
 	}
 
-	public abstract boolean initializeUDPSocket(DatagramSocket socket) throws IOException;
 	public abstract boolean initializeTCPSocket(Socket socket) throws IOException;
 	
-	public abstract void closeUDPSocket(DatagramSocket socket) throws IOException;
 	public abstract void closeTCPSocket(Socket socket) throws IOException;
 
 }
