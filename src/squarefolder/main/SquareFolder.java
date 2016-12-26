@@ -13,6 +13,7 @@ import squarefolder.io.net.SFServer;
  * */
 public class SquareFolder
 {
+	public enum DeviceType { Server, Client };
 	
 	/**The port that this instance of SquareFolder runs on.*/
 	private int port;
@@ -26,19 +27,25 @@ public class SquareFolder
 	/**
 	 * @param	port				what port to bind this SquareFolder's device sockets to.
 	 * */
-	public SquareFolder(int port)
+	public SquareFolder(DeviceType type, int port)
 	{
 		
 		this.port = port;
 		
 		this.sfFrame = new SquareFolderFrame(false);
 		
-		//ourDevice = new SFDevice(InetAddress.getLocalHost());
-		try {
-			ourDevice = new SFServer(InetAddress.getLocalHost(), port, port+1);
-			//ourDevice = new SFClient(InetAddress.getLocalHost(),InetAddress.getLocalHost(), port, port+1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		try 
+		{
+			if(type == DeviceType.Server)
+			{
+				ourDevice = new SFServer(port, port+1);
+			}
+			else if(type == DeviceType.Client)
+			{
+				ourDevice = new SFClient(InetAddress.getLocalHost(), port, port+1);
+			}
+		} catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}

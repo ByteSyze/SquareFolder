@@ -3,22 +3,25 @@ package squarefolder.io.net;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SFServer extends SFDevice
 {
+	
+	private ServerSocket serverSocket;
 
-	public SFServer(InetAddress myAddress, int udpPort, int tcpPort) throws IOException 
+	public SFServer(int udpPort, int tcpPort) throws IOException 
 	{
-		super(myAddress, udpPort, tcpPort);
+		super(udpPort, tcpPort);
 	}
 
 	@Override
 	public boolean initializeTCPSocket(Socket socket) throws IOException 
 	{
-		socket = new Socket();
-		socket.bind(new InetSocketAddress(socket.getInetAddress(), tcpPort));
+		serverSocket = new ServerSocket(tcpPort);
+		socket = serverSocket.accept();
+		
 		return false;
 	}
 
@@ -27,6 +30,18 @@ public class SFServer extends SFDevice
 	{
 		udpSocket = new DatagramSocket(udpPort);
 		return false;
+	}
+	
+	@Override
+	public void closeTCPSocket(Socket socket) throws IOException
+	{
+		socket.close();
+	}
+	
+	@Override
+	public void closeUDPSocket(DatagramSocket socket) throws IOException
+	{
+		socket.close();
 	}
 
 }
